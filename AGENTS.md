@@ -28,3 +28,15 @@ OBSERVE → THINK → PLAN → BUILD → EXECUTE → VERIFY → LEARN. Load `/sk
 
 Full doctrine: `~/.agents/skills/isc-loop/SKILL.md`, `~/.agents/skills/isa/SKILL.md`, and the
 canonical PAI spec at `~/.claude/PAI5/PAI/ALGORITHM/`.
+
+---
+
+## Semantic Anchors
+
+Named frameworks (MECE, Minto, BLUF, arc42, C4, ADR, DDD, Strangler Fig, STRIDE, Wardley, Cynefin,
+EARS, MoSCoW, Diátaxis, …) are prompt vocabulary: use them freely in prompts, prose and deliverables.
+Full catalog with the complete list: `~/.agents/SEMANTIC-ANCHORS.md` — read it when choosing frameworks.
+
+**Hard boundary:** an anchor is never an ISC (ISCs are binary and tool-verifiable) and never a
+capability (capabilities invoke a Skill/Agent). Never list one as a selected capability.
+Excluded: MBTI, DISC, Big Five, HEXACO — never in client-facing deliverables.

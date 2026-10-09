@@ -16,13 +16,14 @@ Ported from Daniel Miessler's PAI (canonical source lives locally at `~/.claude/
 | `AGENTS.md` | Global always-on directive — tells the agent to run the loop by default |
 | `skills/isc-loop/SKILL.md` | The seven-phase loop doctrine (tiers E1–E5, mode classify, fast-path, ISC TRACKER) |
 | `skills/isa/SKILL.md` | The ISA authoring contract (12 sections, tier gate, 6 workflows, guardrails) |
+| `SEMANTIC-ANCHORS.md` | Named-framework catalog (MECE, C4, STRIDE, Wardley…) — prompt vocabulary, never ISCs or capabilities |
 | `templates/project-AGENTS.md` | Per-project pointer to drop at a repo root |
 | `install.sh` | Symlinks the live locations to this repo, then run `/reload` in pi |
 
 ## Install / deploy
 
 ```bash
-./install.sh          # symlinks ~/AGENTS.md and ~/.agents/skills/{isc-loop,isa} → this repo
+./install.sh          # symlinks ~/AGENTS.md, ~/.agents/SEMANTIC-ANCHORS.md and ~/.agents/skills/{isc-loop,isa} → this repo
 # then run /reload inside pi (or restart) to load skills + context files
 ```
 
@@ -72,3 +73,13 @@ pi discovers global skills from `~/.agents/skills/` and loads `AGENTS.md` walkin
 - `~/.claude/PAI5/` — the canonical PAI source (danielmiessler fork) the skills reference for depth.
 - `~/sentinel-tools/` — system tuning (freeze-watchdog service, ollama GPU drop-in). Separate
   concern; not saved to GitHub yet.
+
+## Where things live (the three repos)
+
+| Repo | Job | What's in it |
+| ---- | --- | ------------ |
+| **pai-agent-loop** (this) | The loop | AGENTS.md directive, isc-loop + isa skills, Semantic Anchors — portable to pi, Hermes, any AGENTS.md harness |
+| [memory-fabric](https://github.com/mrwmrw01/memory-fabric) | Memory fabric + context-engineering layer | systemd units/drop-ins (Octopoda, Engram, Headroom, anthropic-shim), Claude Code hook wiring, `claude-local` launchers, fabric map — wiring, not data |
+| [PAI5](https://github.com/mrwmrw01/PAI5) | The engine | Algorithm (`PAI/ALGORITHM/`), hooks, TOOLS (Inference, LocalInference, AnthropicShim), Pulse |
+
+Other skills present in `~/.agents/skills/` (loopy, tdd, to-spec, grill-me, grilling, domain-modeling) are third-party and deliberately not vendored here.
